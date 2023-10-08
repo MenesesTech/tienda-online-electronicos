@@ -1,0 +1,106 @@
+main{
+    padding-top: 150px;
+}
+
+.container-narrow {
+    padding: 0 80px;
+}
+
+.pageHeader {
+    margin: 50px 0;
+}
+
+.pageHeader--back {
+    display: inline-block;
+    font-family: var(--title-color-black);
+    margin-bottom: 25px;
+    color: var(--dark-color);
+}
+
+.sectionHeader {
+    color: var(--title-color-black);
+    margin-bottom: 70px;
+}
+
+.sectionheader--heading {
+    margin-top: 0 !important;
+}
+
+.sectionheader--description {
+    max-width: 530px;
+}
+
+.pageLayout {
+    display: flex;
+    color: var(--title-color-black);
+    flex-wrap: wrap;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.pageLayout--section {
+    flex: 1 0 0;
+    margin-bottom: 60px;
+}
+
+.segment--title {
+    padding-bottom: 10px;
+    margin-bottom: 34px;
+    border-bottom: 1px solid var(--text-color-light);
+}
+
+.pageLayout--section-secondary {
+    margin-left: 80px;
+    max-width: 670px;
+}
+
+@media screen and (max-width: 720px) {
+
+    .pageLayout--section-secondary,
+    .pageLayout--section-primary {
+        margin-left: 0;
+    }
+
+    .pageLayout {
+        flex-direction: column;
+    }
+}
+
+.segment__button {
+    margin-top: 32px;
+}
+
+.button--primary {
+    position: relative;
+    display: inline-block;
+    padding: 14px 28px;
+    line-height: normal;
+    font-family: var(--heading-font-family);
+    letter-spacing: .2em;
+    font-size: 14px;
+    border: 1px solid transparent;
+    text-transform: uppercase;
+    background-color: var(--button-background);
+    color: var(--background);
+    transition: color .45s cubic-bezier(.785, .135, .15, .86), border .45s cubic-bezier(.785, .135, .15, .86);
+}
+
+.button--primary:hover {
+    background-color: transparent;
+    border: 1px solid var(--text-color-light);
+    color: var(--button-background);
+}
+
+.segment-opcion {
+    margin-top: 20px;
+}
+
+.segment-opcion a{
+    color: var(--button-background);
+}
+.delete__address {
+    margin-left: 10px;
+}
+.notificacion{
+    color: var(--text-color-light);
+}

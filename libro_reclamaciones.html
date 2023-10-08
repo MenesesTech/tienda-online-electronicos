@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/reclamacion.css">
+    <link rel="stylesheet" href="assets/css/variables.css">
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1 class="form-title">Libro de Reclamaciones Electrónico | TECNOSMART</h1>
+            <form class="contact-form" action="php/mail.php" method="post">
+                <div class="form-group">
+                    <label for="nombres_apellidos">NOMBRES Y APELLIDOS *</label>
+                    <input type="text" id="nombres_apellidos" name="nombres_apellidos" required>
+                </div>
+                <div class="form-group">
+                    <label for="numero_dni">N° DNI *</label>
+                    <input type="text" id="numero_dni" name="numero_dni" required>
+                </div>
+                <div class="form-group">
+                    <label for="direccion">DIRECCIÓN COMPLETA *</label>
+                    <input type="text" id="direccion" name="direccion" required>
+                </div>
+                <div class="form-group">
+                    <label for="fecha_reclamo">FECHA DE RECLAMO O QUEJA *</label>
+                    <input type="date" id="fecha_reclamo" name="fecha_reclamo" required>
+                </div>
+                <div class="form-group">
+                    <label for="correo">Email *</label>
+                    <input type="email" id="correo" name="correo" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono *</label>
+                    <input type="tel" id="telefono" name="telefono">
+                </div>
+                <div class="form-group">
+                    <label for="numero_pedido">Número de Pedido *</label>
+                    <input type="text" id="numero_pedido" name="numero_pedido" required>
+                </div>
+                <div class="form-group">
+                    <label for="comprobante_pago">Comprobante de Pago</label>
+                    <input type="text" id="comprobante_pago" name="comprobante_pago">
+                </div>
+                <div class="form-group">
+                    <label for="bien_contratado">Seleccione el bien contratado *</label>
+                    <select id="bien_contratado" name="bien_contratado" required>
+                        <option value="Producto">Producto</option>
+                        <option value="Servicio">Servicio</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Seleccione el tipo de reclamación</label>
+                    <div class="radio-group">
+                        <input type="radio" id="reclamo" name="reclamo" value="Reclamo" required>
+                        <label for="reclamo">Reclamo</label>
+                    </div>
+                    <div class="radio-group">
+                        <input type="radio" id="queja" name="reclamo" value="Queja" required>
+                        <label for="queja">Queja</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="detalle_reclamo">Detalles y/o acciones adoptadas por el vendedor</label>
+                    <textarea id="detalle_reclamo" name="detalle_reclamo" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <p class="note">Para imprimir esta página que contiene su hoja de reclamación, presione Ctrl + P
+                        antes de utilizar el botón de enviar.</p>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="submit-button">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+
+</html>

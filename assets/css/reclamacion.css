@@ -1,0 +1,107 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: var(--white-color);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.form-title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 800;
+    color: var(--dark-color);
+}
+
+.contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: 600;
+    display: block;
+    color: var(--dark-color);
+}
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+select {
+    appearance: none;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+.submit-button {
+    background-color: #00ad5f;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.note {
+    font-size: 14px;
+    color: var(--dark-color-light);
+    text-align: center;
+    margin-top: 10px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .contact-form {
+        grid-template-columns: 1fr;
+    }
+}
