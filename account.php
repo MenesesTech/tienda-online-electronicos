@@ -1,11 +1,48 @@
+<?php
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $usuario = $_POST['usuario'];
+    $pass = $_POST['pass'];
+
+    // Incluir el archivo de conexión a la base de datos
+    require_once 'conexion.php';
+
+    $consulta = "SELECT * FROM usuarios WHERE email = '$usuario' AND contrasena = '$pass'";
+    $resultado = mysqli_query($conn, $consulta);
+
+    if ($resultado && mysqli_num_rows($resultado) > 0) {
+        // Inicio de sesión exitoso, obtener el nombre del usuario
+        $fila = mysqli_fetch_assoc($resultado);
+        $nombreUsuario = $fila['nombres'];
+
+        // Guardar el nombre de usuario en la variable de sesión
+        $_SESSION['nombres'] = $nombreUsuario;
+
+        // Redireccionar al index o a otra página deseada
+        header("Location: index.php");
+        exit();
+    } else {
+        // Credenciales inválidas, mostrar mensaje de error
+        $mensajeError = "Nombre de usuario o contraseña incorrectos";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cuenta</title>
     <link rel="stylesheet" href="assets/css/account.css">
 </head>
+
 <body>
     <header>
         <?php include('includes/header.php'); ?>
@@ -50,4 +87,5 @@
         <?php include('includes/footer.html'); ?>
     </footer>
 </body>
+
 </html>
