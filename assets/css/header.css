@@ -29,7 +29,7 @@ img {
     flex-direction: column;
     top: 0;
     left: 0;
-    z-index: 4;
+    z-index: 99;
     width: 100%;
     background-color: var(--dark-color);
     justify-content: center;
@@ -174,11 +174,12 @@ img {
 
 .navbar-list {
     display: flex;
+    flex-wrap: wrap;
+    padding: 0 15px;
     list-style: none;
     padding: 0;
     margin: 0;
 }
-
 .navbar-item {
     display: inline-block;
     margin: 0 50px;
@@ -228,11 +229,15 @@ img {
 .log-header{
     display: none;
 }
+@media screen and (max-width: 1540px) {
+    .navbar-item {
+        margin: 0 25px;
+    }
+}
 @media screen and (max-width: 1200px) {
     .nav-secondary {
         display: none;
     }
-
     .nav {
         display: block;
     }

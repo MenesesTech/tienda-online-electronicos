@@ -77,19 +77,22 @@
                     <a href="index.php" class="navbar-link">Inicio</a>
                 </li>
                 <li class="navbar-item">
-                    <a href="#laptops" class="navbar-link">Laptops</a>
+                    <a href="laptop.php" class="navbar-link">Laptops</a>
                 </li>
                 <li class="navbar-item">
                     <a href="#computadoras" class="navbar-link">Computadoras</a>
                 </li>
                 <li class="navbar-item">
-                    <a href="#zonagamer" class="navbar-link">Zona Gamer</a>
+                    <a href="#zonagamer" class="navbar-link">Accesorios</a>
                 </li>
                 <li class="navbar-item">
-                    <a href="#pantallas" class="navbar-link">Pantallas</a>
+                    <a href="#pantallas" class="navbar-link">Componentes</a>
                 </li>
                 <li class="navbar-item">
-                    <a href="#accesorios" class="navbar-link">Accesorios</a>
+                    <a href="#accesorios" class="navbar-link">Almacenamiento</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#accesorios" class="navbar-link">Impresoras</a>
                 </li>
             </ul>
         </nav>

@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    <div id="modalContainer" class="modal-container">
+        <!-- El contenido del Login se cargará aquí -->
+    </div>
     <header>
         <?php include('includes/header.php'); ?>
     </header>

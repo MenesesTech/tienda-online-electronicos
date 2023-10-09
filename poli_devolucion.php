@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    <div id="modalContainer" class="modal-container">
+        <!-- El contenido del Login se cargará aquí -->
+    </div>
     <header>
         <?php include('includes/header.php'); ?>
     </header>
@@ -39,21 +42,21 @@
                             <strong>Para llevar a cabo los cambios y/o devoluciones debes de tener en cuenta lo siguiente:</strong>
                             <br><br>
                             <div class="main__page__list">
-                            <ul>
-                                <li><i class='bx bxs-circle'></i>Cualquier cambio se debe efectuar con su comprobante (boleta o factura original).</li>
-                                <li><i class='bx bxs-circle'></i>Presentar su documento de identidad</li>
-                                <li><i class='bx bxs-circle'></i>Condiciones del Producto
-                                    <ul class="list__left"><br>
-                                        <li><i class='bx bxs-circle'></i>El producto debe estar nuevo y sin señales de uso</li>
-                                        <li><i class='bx bxs-circle'></i>Debe contar con todas sus etiquetas, accesorios, manuales, gráficas, adhesivos, cubiertas, piezas de armado los cuales deben encontrarse en perfectas condiciones. Si algún componente falta o no se encuentra en las condiciones mencionadas se rechazará el cambio o devolución.</li>
-                                        <li><i class='bx bxs-circle'></i>Los empaques deben ser originales, completos y en buen estado.</li>
-                                        <li><i class='bx bxs-circle'></i>Si el producto fue vendido con una promoción (obsequio), la promoción también debe ser devuelta en conjunto con el producto principal.</li>
-                                    </ul>
-                                    <br>
-                                </li>
-                                <li><i class='bx bxs-circle'></i>La fecha límite para realizar cambios y/o devoluciones debe ser dentro de los 3 días hábiles de haber realizado su compra siempre que se respeten los tres puntos anteriores.</li>
-                                <li><i class='bx bxs-circle'></i>Tener en cuenta: el proceso de devolución de dinero en tarjetas de crédito y/o débito de cualquier Banco, no es inmediato y depende del tiempo del banco emisor de la tarjeta.</li>
-                            </ul>
+                                <ul>
+                                    <li><i class='bx bxs-circle'></i>Cualquier cambio se debe efectuar con su comprobante (boleta o factura original).</li>
+                                    <li><i class='bx bxs-circle'></i>Presentar su documento de identidad</li>
+                                    <li><i class='bx bxs-circle'></i>Condiciones del Producto
+                                        <ul class="list__left"><br>
+                                            <li><i class='bx bxs-circle'></i>El producto debe estar nuevo y sin señales de uso</li>
+                                            <li><i class='bx bxs-circle'></i>Debe contar con todas sus etiquetas, accesorios, manuales, gráficas, adhesivos, cubiertas, piezas de armado los cuales deben encontrarse en perfectas condiciones. Si algún componente falta o no se encuentra en las condiciones mencionadas se rechazará el cambio o devolución.</li>
+                                            <li><i class='bx bxs-circle'></i>Los empaques deben ser originales, completos y en buen estado.</li>
+                                            <li><i class='bx bxs-circle'></i>Si el producto fue vendido con una promoción (obsequio), la promoción también debe ser devuelta en conjunto con el producto principal.</li>
+                                        </ul>
+                                        <br>
+                                    </li>
+                                    <li><i class='bx bxs-circle'></i>La fecha límite para realizar cambios y/o devoluciones debe ser dentro de los 3 días hábiles de haber realizado su compra siempre que se respeten los tres puntos anteriores.</li>
+                                    <li><i class='bx bxs-circle'></i>Tener en cuenta: el proceso de devolución de dinero en tarjetas de crédito y/o débito de cualquier Banco, no es inmediato y depende del tiempo del banco emisor de la tarjeta.</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
