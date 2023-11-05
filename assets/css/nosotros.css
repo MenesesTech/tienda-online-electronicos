@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500;6..12,600;6..12,700;6..12,800&display=swap');
+:root {
+    --header-height: 3.5rem;
+    /* ============= Colors =============== */
+    --first-color: #0D0800;
+    --first-color-alt: #F26849;
+    --title-color: #0D0800;
+    --text-color-light: hsl(140, 4%, 64%);
+    --white-color: hsl(0, 0%, 100%);
+    --body-color: #F2F2F2;
+    --container-color: hsl(8, 0%, 95%);
+    --shadow-img: drop-shadow(0 8px 12px Dhsla(0, 0, 0%, 2));
+    --filter-img: invert(1);
+
+    /* ============ Font and topography ============= */
+    --body-font: "Poppins", sans-serif;
+    --second-font: 'Nunito Sans','Poppins', sans-serif;
+    --biggest-font-size: 3rem;
+    --big-font-size: 2rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+
+    /* ============ Font weight ================ */
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semi-bold: 600;
+
+    /* =========== z index ================ */
+    --z-tooltip: 10;
+    --z-fixed: 100;
+
+    /* ============ Responsive topography ================= */
+    @media screen and (min-width: 1150px) {
+        :root {
+            --biggest-font-size: 5.5rem;
+            --big-font-size: 3rem;
+            --h1-font-size: 2.25rem;
+            --h2-font-size: 1.5rem;
+            --h3-font-size: 1.25rem;
+            --normal-font-size: 1rem;
+            --small-font-size: .875rem;
+        }
+    }
+}
+
+/* ================= BASE ======================= */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body,
+input,
+button {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+}
+
+body {
+    background-color: var(--body-color);
+    color: var(--text-color);
+    transition: background-color .4s;
+}
+
+input,
+button {
+    border: none;
+    outline: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+    line-height: 100%;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* =================== ABOUT US ====================== */
+.page--section {
+    background-color: var(--background);
+}
+
+.page--section section {
+    display: block;
+}
+
+.page--content-data {
+    padding-block: 120px;
+    margin: 15px;
+    background-color: var(--background);
+}
+.title__content {
+    margin-block: 20px;
+    text-transform: uppercase;
+
+}
+
+.title__content h3 {
+    text-align: center;
+    color: var(--text-color);
+    font-family: var(--body-font);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.title__content h2 {
+    text-align: center;
+    color: var(--text-color);
+    font-family: var(--body-font);
+    font-size: 1.5rem;
+    color: var(--acent-color);
+}
+
+.main__page {
+    margin-block-end: 40px;
+    max-width: 600px;
+    margin-inline: auto;
+    text-align: justify;
+    font-family: var(--body-font);
+    font-weight: 400;
+    color: var(--first-color);
+    font-size: 1rem;
+}
+
+.main__page__list ul li{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.bxs-circle {
+    font-size: 7px; /* Tamaño de la viñeta (ajusta según tu preferencia) */
+    margin-right: 5px;
+    display: inline-block;
+    transform: translateY(-3px);
+}
+.list__left{
+    padding-left: 40px;
+}
+.list__left .bxs-circle {
+    position: relative;
+    margin-right: 10px;
+    font-size: 5px;
+}
+/* For large devices */
+@media screen and (min-width: 768px) {
+    .width--page {
+        background-image: none;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1150px) {
+    .width--page {
+        display: flex;
+        width: 100%;
+        background-image: url('https://imagenes.compragamer.com/bannersMarcasSponsor/fondoIntel.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        justify-content: center;
+    }
+}
+/* .ri-circle-fill{
+    font-size: 8px;
+}
+.ri-checkbox-blank-fill{
+    font-size: 5px;
+} */

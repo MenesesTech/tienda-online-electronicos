@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/header.css">
+</head>
+
+<body>
+    <footer class="footer">
+        <div class="footer__container container grid">
+            <div>
+                <a href="" class="footer__logo">
+                    <img src="assets/img/Logo-Tecnosmart-White.svg" alt="">
+                </a>
+            </div>
+            <div class="footer__data grid">
+                <div>
+                    <h3 class="footer__title">Acerca de Tecnosmart</h3>
+                    <ul class="footer__links">
+                        <li>
+                            <a href="nosotros.php" class="footer__link">Sobre Nosotros</a>
+                        </li>
+                        <li>
+                            <a href="poli_privacidad.php" class="footer__link">Nuestras tiendas</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer__title">Atención al cliente</h3>
+                    <ul class="footer__links">
+                        <li>
+                            <a href="poli_devolucion.php" class="footer__link">Política de Devoluciones</a>
+                        </li>
+                        <li>
+                            <a href="poli_privacidad.php" class="footer__link">Política de Privacidad</a>
+                        </li>
+                        <li>
+                            <a href="" class="footer__link">Terminos y condiciones</a>
+                        </li>
+                        <li>
+                            <a href="libro_reclamaciones.html" class="footer__link">Libro de Reclamaciones</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer__title">Compras confiables</h3>
+                    <ul class="footer__links">
+                        <li>
+                            <a href="" class="footer__link">Guia de compra</a>
+                        </li>
+                        <li>
+                            <a href="" class="footer__link">Formas de pago</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer__title">Social Media</h3>
+                    <div class="footer__social">
+                        <a href="" class="footer__social-link">
+                            <i class="ri-facebook-circle-line"></i>
+                        </a>
+                        <a href="" class="footer__social-link">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="" class="footer__social-link">
+                            <i class="ri-tiktok-fill"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="footer__copy">
+            &#169; All Rights Reserved By Femt
+        </span>
+    </footer>
+    <!-- =============== SCROLL UP =============== -->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="ri-arrow-up-s-line"></i>
+    </a>
+    <!-- =============== SCROLLREVEAL =============== -->
+    <script src="assets/js/scrollreveal.min.js"></script>
+    <!-- ================ SWIPER JS ================= -->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <!-- =============== MAIN JS =============== -->
+    <script src="assets/js/main.js"></script>
+    <!-- =============== CART ================== -->
+    <script src="assets/js/cart.js"></script>
+    <script>
+        /*=============== SWIPER PRODUCTS ===============*/
+        let swiperProducts = new Swiper(".products__container", {
+            // centeredSlides: true,
+            direction: 'horizontal',
+            loop: true,
+
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 4,
+                    spaceBetween: 10,
+                },
+                1024: {
+                    slidesPerView: 5,
+                    spaceBetween: 50,
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>

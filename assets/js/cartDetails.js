@@ -1,19 +1,4 @@
 
-// Cart
-let cartIcon = document.querySelector('#cart-icon');
-let cart = document.querySelector('.cart__container');
-let closeCart = document.querySelector('#close-cart');
-
-//  Open cart
-cartIcon.onclick = () => {
-    cart.classList.add("active");
-};
-
-// Close cart
-closeCart.onclick = () => {
-    cart.classList.remove("active");
-};
-
 // Cart Working JS
 if (document.readyState == "loading") {
     document.addEventListener("DOMContentLoaded", ready);
@@ -28,19 +13,19 @@ function ready() {
         var button = removeCartButtons[i];
         button.addEventListener('click', removeCartItem);
     }
-    
+
     // quantity changes
     var quantityInputs = document.getElementsByClassName("cart-quantity");
     for (var i = 0; i < quantityInputs.length; i++) {
         var input = quantityInputs[i];
         input.addEventListener("change", quantityChanged);
     }
-    
+
     // Add to cart
-    var addCart = document.getElementsByClassName("add-cart");
-    for (var i = 0; i < addCart.length; i++) {
-        var button = addCart[i];
-        button.addEventListener("click", addCartClicked);
+    var addCartDetails = document.getElementsByClassName("add-cart-details");
+    for (var i = 0; i < addCartDetails.length; i++) {
+        var button = addCartDetails[i];
+        button.addEventListener("click", addCartDetailClicked);
     }
     // Buy button work
     document.getElementsByClassName('btn-buy')[0].addEventListener('click', buyButtonClicked);
@@ -72,23 +57,33 @@ function quantityChanged(event) {
 }
 
 // Add to cart
-function addCartClicked(event) {
+function addCartDetailClicked(event) {
     var button = event.target;
-    var shopProducts = button.parentElement;
-    var title = shopProducts.getElementsByClassName('product-title')[0].innerText;
-    var price = shopProducts.getElementsByClassName('price')[0].innerText;
-    var productImg = shopProducts.getElementsByClassName('product-img')[0].src;
-    addProductCart(title, price, productImg);
-    updatetotal();
+    var productDetail = button.parentElement.parentElement.parentElement; // Accede al contenedor principal
+    var title = productDetail.querySelector('.product-title').innerText; // Selecciona el título dentro de ese contenedor
+    var price = productDetail.querySelector('.price').innerText;
+    var productImg = productDetail.querySelector('.product-img-detail');
+    var inputQuantity = productDetail.querySelector('.input-quantity');
 
-    // Abre el carrito después de agregar un producto
-    cart.classList.add("active");
+    // Verificar si productImg no es nulo
+    if (productImg) {
+        var productImgSrc = productImg.src;
+        var quantity = parseInt(inputQuantity.value); // Obtener la cantidad del campo de entrada
+        console.log(title, price, productImgSrc, quantity);
+        addProductCart(title, price, productImgSrc, quantity);
+        updatetotal();
+        cart.classList.add("active");
+    } else {
+        console.error(".product-img-detail not found");
+    }
 }
 
-function addProductCart(title, price, productImg) {
+
+
+function addProductCart(title, price, productImg, quantity) {
     var cartItems = document.getElementsByClassName("cart-content")[0];
     var cartItemsNames = cartItems.getElementsByClassName("cart-product-title");
-    
+
     for (var i = 0; i < cartItemsNames.length; i++) {
         if (cartItemsNames[i].innerText === title) {
             alert("Ya has añadido este artículo al carrito.");
@@ -98,13 +93,13 @@ function addProductCart(title, price, productImg) {
 
     var cartShopBox = document.createElement("div");
     cartShopBox.classList.add('cart-box');
-    
+
     var cartBoxContent = `
         <img src="${productImg}" alt="" class="cart-img">
         <div class="detail-box">
             <div class="cart-product-title">${title}</div>
             <div class="cart-price">${price}</div>
-            <input type="number" value="1" class="cart-quantity">
+            <input type="number" value="${quantity}" class="cart-quantity">
         </div>
         <!-- Remove Cart -->
         <i class="ri-delete-bin-7-fill cart-remove"></i>
@@ -113,7 +108,6 @@ function addProductCart(title, price, productImg) {
     cartShopBox.innerHTML = cartBoxContent;
 
     document.getElementsByClassName("cart-content")[0].append(cartShopBox);
-
     cartShopBox.getElementsByClassName('cart-remove')[0].addEventListener('click', removeCartItem);
     cartShopBox.getElementsByClassName('cart-quantity')[0].addEventListener('change', quantityChanged);
 

@@ -1,0 +1,336 @@
+/* Importar fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500;6..12,600;6..12,700;6..12,800&display=swap');
+
+/* Variables CSS */
+:root {
+    --header-height: 3.5rem;
+    /* Colores */
+    --first-color: #0D0800;
+    --first-color-alt: #F26849;
+    --title-color: #0D0800;
+    --text-color-light: hsl(140, 4%, 64%);
+    --white-color: hsl(0, 0%, 100%);
+    --body-color: #F2F2F2;
+    --container-color: hsl(8, 0%, 95%);
+    --shadow-img: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.2));
+    --filter-img: invert(1);
+
+    /* Fuentes y tipografía */
+    --body-font: "Poppins", sans-serif;
+    --second-font: 'Nunito Sans', 'Poppins', sans-serif;
+    --biggest-font-size: 3rem;
+    --big-font-size: 2rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+
+    /* Pesos de fuente */
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semi-bold: 600;
+
+    /* Índices Z */
+    --z-tooltip: 10;
+    --z-fixed: 100;
+
+    /* Tipografía sensible */
+    @media screen and (min-width: 1150px) {
+        --biggest-font-size: 5.5rem;
+        --big-font-size: 3rem;
+        --h1-font-size: 2.25rem;
+        --h2-font-size: 1.5rem;
+        --h3-font-size: 1.25rem;
+        --normal-font-size: 1rem;
+        --small-font-size: .875rem;
+    }
+}
+
+/* Reset de estilos */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body,
+input,
+button {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+}
+
+body {
+    background-color: var(--body-color);
+    color: var(--text-color);
+    transition: background-color 0.4s;
+}
+
+input,
+button {
+    border: none;
+    outline: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+    line-height: 100%;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Contenedor principal */
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Encabezado de página */
+.page-heading {
+    padding: 2.3vw 0;
+    margin-bottom: 2.3vw;
+    line-height: 1.4;
+    background-color: #fafafa;
+    margin-bottom: 25px;
+}
+
+.row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.a-center {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #888888;
+}
+
+.page-heading .title {
+    display: block;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Contenido de la página */
+.content-page {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 100%;
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+
+    .a-center {
+        width: 100%;
+    }
+}
+
+/* Navegación en Mi Cuenta */
+.MyAccount-navigation-wrapper {
+    display: block;
+    width: calc(25% - 30px);
+    height: 100vh;
+    display: inline-block;
+    margin-right: 30px;
+    margin-bottom: 0;
+    border-right: 1px solid var(--et_border-color);
+    float: left;
+}
+
+.MyAccount-user-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.MyAccount-user-info img {
+    border-radius: 50%;
+    max-width: 86px;
+    margin-bottom: 15px;
+}
+
+.MyAccount-user-info div {
+    width: 100%;
+}
+
+.MyAccount-navigation {
+    display: inline-block;
+    margin-right: 30px;
+    margin-bottom: 0;
+    float: left;
+}
+
+.MyAccount-navigation ul {
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 0;
+}
+
+.MyAccount-navigation-link {
+    list-style: none;
+    margin: 0;
+    line-height: 1.8;
+    padding: 0;
+}
+
+.MyAccount-navigation-link a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Contenido activo en Mi Cuenta */
+.MyAccount-content {
+    display: none;
+    /* flex-basis: calc(70% - 20px); */
+    width: 75%;
+    float: left;
+}
+
+.MyAccount-content.active {
+    display: block;
+}
+
+.title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    color: #222222;
+    margin-bottom: 0.7rem;
+}
+
+.MyAccount-dashboard-buttons {
+    margin: 0 -10px -10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.btn {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    margin: 0 10px 10px;
+    text-align: center;
+    white-space: nowrap;
+    font-weight: 400;
+    text-transform: capitalize;
+    border-style: none;
+}
+
+.btn.big {
+    font-size: 1rem;
+    height: auto;
+    padding: 0.75rem 2.2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.btn.black {
+    background-color: var(--first-color);
+    border: 1px solid var(--first-color);
+    color: var(--white-color);
+    -webkit-text-fill-color: currentColor;
+}
+
+p {
+    line-height: 1.6;
+    font-size: 1.14rem;
+}
+
+.form-row {
+    margin-bottom: 1.43rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.required {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+}
+
+.form-row input {
+    border: 1px solid var(--first-color);
+    background-color: var(--white-color);
+    outline: 0;
+    border-radius: 0px;
+    width: 100%;
+    color: var(--first-color);
+    font-size: 1.14rem;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    text-align: start;
+    height: 2.642rem;
+    line-height: 2rem;
+    padding: 0 1.07em;
+    -webkit-appearance: none;
+}
+
+@media only screen and (min-width: 993px) {
+
+    .MyAccount-user-info {
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        text-align: start;
+    }
+
+
+}
