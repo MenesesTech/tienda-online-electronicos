@@ -8,24 +8,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Validación básica
     if (empty($username) || empty($email) || empty($password)) {
         $mensaje = "Por favor, completa todos los campos.";
     } else {
-        // Consulta preparada
         $stmt = $conn->prepare("INSERT INTO usuario (username, email, contraseña) VALUES (?, ?, ?)");
 
-        // Verificar si la consulta se pudo preparar
         if ($stmt) {
-            $hashed_password = $password; // Hashear la contraseña (no es recomendable, solo para pruebas)
-            $stmt->bind_param("sss", $username, $email, $hashed_password);
+            $stmt->bind_param("sss", $username, $email, $password);
 
             if ($stmt->execute()) {
-                // Registro exitoso
                 $mensaje = "Registro exitoso";
-                // No es necesario redirigir aquí, puedes hacerlo en JavaScript
             } else {
-                // Error en la ejecución de la consulta
                 $mensaje = "Error al registrar el usuario: " . $stmt->error;
             }
             $stmt->close();

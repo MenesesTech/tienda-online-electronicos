@@ -22,13 +22,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $imagen_nombre = $_FILES['imagen']['name'];
         move_uploaded_file($imagen_tmp, 'assets/img/' . $imagen_nombre);
         $url_imagen = 'assets/img/' . $imagen_nombre;
+        echo "Ruta de la imagen: " . $url_imagen;
     } else {
         $url_imagen = null; // Si no se proporciona una imagen
     }
 
-    $sql = "INSERT INTO producto (nombre, marca, modelo, color, procesador, memoria, disco, graficos, descripcion, precio, stock, categoria_id, subcategoria_id, url_imagen) VALUES (?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?,?)";
+    $sql = "INSERT INTO producto (nombre, marca, modelo, color, procesador, memoria, disco, graficos, descripcion, precio, stock, categoria_id, subcategoria_id, url_imagen) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssssssssdid", $nombre, $marca, $modelo, $color, $procesador, $memoria, $disco, $graficos, $descripcion, $precio, $stock, $categoria_id, $subcategoria_id, $url_imagen);
+    $stmt->bind_param("ssssssssssddis", $nombre, $marca, $modelo, $color, $procesador, $memoria, $disco, $graficos, $descripcion, $precio, $stock, $categoria_id, $subcategoria_id, $url_imagen);
+
 
     if ($stmt->execute()) {
         echo "Producto registrado con éxito";

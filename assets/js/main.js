@@ -46,7 +46,7 @@ window.addEventListener('scroll', scrollup); // Cambié 'scrollUp' a 'scrollup'
 const sr = ScrollReveal({
     origin: 'bottom', // Cambia el origen de la animación a 'bottom'
     distance: '60px', // Cambia la distancia de desplazamiento
-    duration: 2000, // Ajusta la duración de la animación (en milisegundos)
+    duration: 1000, // Ajusta la duración de la animación (en milisegundos)
     delay: 400,
     reset: true, // Puedes habilitar o deshabilitar el reinicio de las animaciones
 });

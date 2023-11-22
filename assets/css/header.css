@@ -402,11 +402,14 @@ img {
     top: 0;
     right: -100%;
     width: 360px;
-    min-height: 100vh;
+    height: 100vh;
+    max-height: 100vh;
     padding: 20px;
     background: var(--white-color);
     box-shadow: -2px 0 4px hsla(0, 4%, 15%, 0.1);
     transition: 0.3s;
+    z-index: 9999;
+    overflow-y: auto; 
 }
 
 .cart__container.active {
@@ -740,4 +743,8 @@ img {
     margin-right: auto;
     background-color: var(--title-color);
     justify-content: center;
+}
+
+.no-scroll {
+    overflow: hidden;
 }

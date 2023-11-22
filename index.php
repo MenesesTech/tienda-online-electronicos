@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('conexion.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,328 +73,198 @@ session_start();
         </section>
         <!-- ====================== NEW PRODUCTS =============================== -->
         <h2 class="section__title">LO NUEVO EN TECNOSMART</h2>
-        <section class="products section" id="products">
-        <div class="products__container container swiper">
-                <div class="swiper-wrapper">
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
+        <section class="shop container">
+            <div class="shop-content">
+                <?php
+                $sql = "SELECT * FROM producto WHERE categoria_id = 1 AND subcategoria_id = 1 LIMIT 4";
+                $result = $conn->query($sql);
+    
+                if ($result->num_rows > 0) {
+                    $_SESSION['result'] = $result;
+                    while ($producto = $result->fetch_assoc()) {
+                ?>
+                        <!-- Box -->
+                        <div class="product-box">
+                            <img src="<?php echo $producto['url_imagen']; ?>" alt="" class="product-img">
+                            <a href="product_detail.php?producto_id=<?php echo $producto['producto_id']; ?>">
+                                <h2 class="product-title"><?php echo $producto['nombre']; ?></h2>
+                            </a>
+                            <span class="price">S/.<?php echo $producto['precio']; ?></span>
+                            <i class="ri-shopping-bag-line add-cart" data-producto-id="<?php echo $producto['producto_id']; ?>"></i>
+                        </div>
+                <?php
+                    }
+                } else {
+                    echo "No hay productos disponibles.";
+                }
+                ?>
         </section>
         <!-- ====================== LAPTOPS =============================== -->
         <h2 class="section__title">LAPTOPS</h2>
-        <section class="products section" id="products">
-            <div class="products__container container swiper">
-                <div class="swiper-wrapper">
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
+        <section class="shop container">
+            <div class="shop-content">
+                <!-- Box 1 -->
+                <div class="product-box">
+                    <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
+                    <a href="product_detail.php">
+                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10</h2>
+                    </a>
+                    <span class="price">S/.4604.16</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
                 </div>
-                <div class="swiper-pagination"></div>
+                <!-- Box 1 -->
+                <div class="product-box">
+                    <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
+                    <a href="product_detail.php">
+                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10</h2>
+                    </a>
+                    <span class="price">S/.4604.16</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+                <!-- Box 1 -->
+                <div class="product-box">
+                    <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
+                    <a href="product_detail.php">
+                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10</h2>
+                    </a>
+                    <span class="price">S/.4604.16</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+                <!-- Box 1 -->
+                <div class="product-box">
+                    <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
+                    <a href="product_detail.php">
+                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10</h2>
+                    </a>
+                    <span class="price">S/.4604.16</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
             </div>
         </section>
         <!-- ====================== PC ESCRITORIO =============================== -->
         <h2 class="section__title">PC OFICINA</h2>
-        <section class="products section" id="products">
-            <div class="products__container container swiper">
-                <div class="swiper-wrapper">
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
+        <section class="shop container">
+            <div class="shop-content">
+                <!-- Box 1 -->
+                <div class="product-box">
+                    <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
+                    <a href="product_detail.php">
+                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10</h2>
+                    </a>
+                    <span class="price">S/.4604.16</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
                 </div>
-                <div class="swiper-pagination"></div>
+                <!-- Box 1 -->
+                <div class="product-box">
+                    <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
+                    <a href="product_detail.php">
+                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10</h2>
+                    </a>
+                    <span class="price">S/.4604.16</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+                <!-- Box 1 -->
+                <div class="product-box">
+                    <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
+                    <a href="product_detail.php">
+                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10</h2>
+                    </a>
+                    <span class="price">S/.4604.16</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+                <!-- Box 1 -->
+                <div class="product-box">
+                    <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
+                    <a href="product_detail.php">
+                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10</h2>
+                    </a>
+                    <span class="price">S/.4604.16</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
             </div>
         </section>
         <!-- ====================== PC GAMER =============================== -->
         <h2 class="section__title">PC GAMER</h2>
-        <section class="products section" id="products">
-
-            <div class="products__container container swiper">
-                <div class="swiper-wrapper">
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
+        <section class="shop container">
+            <div class="shop-content">
+                <!-- Box 1 -->
+                <div class="product-box">
+                    <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
+                    <a href="product_detail.php">
+                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10</h2>
+                    </a>
+                    <span class="price">S/.4604.16</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
                 </div>
-                <div class="swiper-pagination"></div>
+                <!-- Box 1 -->
+                <div class="product-box">
+                    <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
+                    <a href="product_detail.php">
+                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10</h2>
+                    </a>
+                    <span class="price">S/.4604.16</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+                <!-- Box 1 -->
+                <div class="product-box">
+                    <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
+                    <a href="product_detail.php">
+                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10</h2>
+                    </a>
+                    <span class="price">S/.4604.16</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+                <!-- Box 1 -->
+                <div class="product-box">
+                    <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
+                    <a href="product_detail.php">
+                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10</h2>
+                    </a>
+                    <span class="price">S/.4604.16</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
             </div>
         </section>
         <!-- ====================== TECLADO - MOUSE =============================== -->
         <h2 class="section__title">TECLADO - MOUSE</h2>
-        <section class="products section" id="products">
-            <div class="products__container container swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
-                    <div class="product-box swiper-slide">
-                        <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
-                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10
-                        </h2>
-                        <span class="price">S/.4604.16</span>
-                        <i class="ri-shopping-bag-line add-cart"></i>
-                    </div>
+        <section class="shop container">
+            <div class="shop-content">
+                <!-- Box 1 -->
+                <div class="product-box">
+                    <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
+                    <a href="product_detail.php">
+                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10</h2>
+                    </a>
+                    <span class="price">S/.4604.16</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
                 </div>
-                <div class="swiper-pagination"></div>
+                <!-- Box 1 -->
+                <div class="product-box">
+                    <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
+                    <a href="product_detail.php">
+                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10</h2>
+                    </a>
+                    <span class="price">S/.4604.16</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+                <!-- Box 1 -->
+                <div class="product-box">
+                    <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
+                    <a href="product_detail.php">
+                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10</h2>
+                    </a>
+                    <span class="price">S/.4604.16</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+                <!-- Box 1 -->
+                <div class="product-box">
+                    <img src="assets/img/laptop-hp-250-g8.jpg" alt="" class="product-img">
+                    <a href="product_detail.php">
+                        <h2 class="product-title">LAPTOP I7 ASUS ( UX430UN165T ) 8550U 8GB 512GB SSD MX150 2GB 14" W10</h2>
+                    </a>
+                    <span class="price">S/.4604.16</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
             </div>
         </section>
         <!-- =============== JOIN US =============== -->
@@ -421,7 +292,7 @@ session_start();
             </div>
         </section>
     </main>
-    <?php include('footer.html')?>
+    <?php include('footer.html') ?>
 </body>
 
 </html>
