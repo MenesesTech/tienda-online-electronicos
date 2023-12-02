@@ -1,7 +1,30 @@
 <?php
 session_start();
 include('conexion.php');
+
+$mensaje = "";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST["correo"];
+    $query = "INSERT INTO emailsuscription (email) VALUES (?)";
+    $stmt = $conn->prepare($query);
+    if ($stmt) {
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        if ($stmt->affected_rows > 0) {
+            $mensaje = "¡Ahora recibirás nuestras promociones!";
+        } else {
+            $mensaje = "Error al registrar el correo: " . $stmt->error;
+        }
+        $stmt->close();
+    } else {
+        $mensaje = "Error en la preparación de la consulta: " . $conn->error;
+    }
+    // Cierra la conexión después de realizar la consulta
+    $conn->close();
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +37,8 @@ include('conexion.php');
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
     <!-- ============ CSS ================ -->
     <link rel="stylesheet" href="assets/css/home.css">
+    <!-- ============= SWEETALERT2 ============= -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Responsive website - FemtCode</title>
 </head>
 
@@ -78,7 +103,7 @@ include('conexion.php');
                 <?php
                 $sql = "SELECT * FROM producto WHERE categoria_id = 1 AND subcategoria_id = 1 LIMIT 4";
                 $result = $conn->query($sql);
-    
+
                 if ($result->num_rows > 0) {
                     $_SESSION['result'] = $result;
                     while ($producto = $result->fetch_assoc()) {
@@ -280,9 +305,9 @@ include('conexion.php');
                             Obtenga información exclusiva sobre nuevos productos, tutoriales, consejos y más.
                         </p>
                     </div>
-                    <form action="" class="join__form">
-                        <input type="text" placeholder="Introduzca su email" class="join__input">
-                        <button class="join__button button">
+                    <form action="" method="POST" class="join__form">
+                        <input type="text" placeholder="Introduzca su email" class="join__input" name="correo">
+                        <button type="submit" class="join__button button">
                             INSCRIBIRSE
                         </button>
                     </form>
@@ -293,6 +318,25 @@ include('conexion.php');
         </section>
     </main>
     <?php include('footer.html') ?>
+    <script>
+        function mostrarAlertaCorreo() {
+            var mensaje = "<?php echo $mensaje; ?>";
+            if (mensaje !== "") {
+                Swal.fire({
+                    title: mensaje,
+                    icon: (mensaje.includes("¡Ahora recibirás nuestras promociones!")) ? "success" : "error",
+                    customClass: {
+                        container: 'green-alert'
+                    }
+                }).then(function() {
+                    if (mensaje === "Registro exitoso") {
+                        window.location.href = "index.php";
+                    }
+                });
+            }
+        }
+        mostrarAlertaCorreo();
+    </script>
 </body>
 
 </html>

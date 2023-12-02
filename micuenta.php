@@ -1,4 +1,5 @@
 <?php
+include('conexion.php');
 session_start();
 if (isset($_POST['logout'])) {
     // Eliminar la variable de sesión 'username'
@@ -55,11 +56,32 @@ if (isset($_POST['logout'])) {
                             <a href="javascript:void(0);" onclick="showContent('account-details')">Detalles de la
                                 cuenta</a>
                         </li>
+                        <!-- Solo el usurio admin con contraseña j068UD9,l#:]APw|6P4V tendra acceso a este navegador -->
+                        <?php
+                        // Verificar si el usuario está autenticado
+                        if (isset($_SESSION['username'])) {
+                            $db_username = $_SESSION['username'];
+
+                            // Consulta SQL para verificar si es administrador y tiene una contraseña específica
+                            $query = "SELECT contraseña FROM usuario WHERE username = ? AND contraseña = 'j068UD9,l#:]APw|6P4V'";
+                            if ($stmt = mysqli_prepare($conn, $query)) {
+                                mysqli_stmt_bind_param($stmt, 's', $db_username); // Vincular parámetro
+                                mysqli_stmt_execute($stmt); // Ejecutar consulta
+                                mysqli_stmt_store_result($stmt); // Almacenar el resultado
+
+                                if (mysqli_stmt_num_rows($stmt) > 0) { // Verificar si se encontró un usuario con esa contraseña
+                                    echo '<li class="MyAccount-navigation-link">
+                                            <a href="javascript:void(0);" onclick="showContent(\'admin\')">Administrador</a>
+                                        </li>';
+                                }
+                            }
+                        }
+                        ?>
                         <li class="MyAccount-navigation-link">
-                            <a href="account.php?logout=1">Salir</a>
+                            <a href="login.php?logout=1">Salir</a>
                         </li>
                         <form action="" method="post">
-                            <button type="submit" name="logout" class="btn black big">Cerrar sesión</button>
+                            <button type="submit" name="logout" class="btn black big" href="login.php?logout=1">Cerrar sesión</button>
                         </form>
                     </ul>
                 </div>
@@ -110,19 +132,91 @@ if (isset($_POST['logout'])) {
             </div>
             <!-- Formulario cuenta -->
             <div class="MyAccount-content form-content" id="account-details">
-                <div class="form-width">
+                <!-- Cambiar contraseña de usuario del formulario -->
+                <?php
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $username = $_SESSION["username"]; // Asumiendo que $username está almacenado en la sesión
+
+                    // Verificar y actualizar la contraseña...
+                    // (código para la gestión de contraseña)
+
+                    // Verificar si se proporcionaron nuevos valores para nombre, apellido y/o email
+                    $name = !empty($_POST["account_first_name"]) ? $_POST["account_first_name"] : null;
+                    $apellidos = !empty($_POST["account_last_name"]) ? $_POST["account_last_name"] : null;
+                    $email = !empty($_POST["account_email"]) ? $_POST["account_email"] : null;
+
+                    // Construir la consulta según los datos proporcionados
+                    $sql = "UPDATE usuario SET";
+                    $types = "";
+                    $params = array();
+
+                    if ($name !== null) {
+                        $sql .= " nombre = ?,";
+                        $types .= "s";
+                        $params[] = $name;
+                    }
+
+                    if ($apellidos !== null) {
+                        $sql .= " apellido = ?,";
+                        $types .= "s";
+                        $params[] = $apellidos;
+                    }
+
+                    if ($email !== null) {
+                        $sql .= " email = ?,";
+                        $types .= "s";
+                        $params[] = $email;
+                    }
+
+                    if (!empty($types)) {
+                        // Eliminar la coma adicional al final de la consulta
+                        $sql = rtrim($sql, ",");
+
+                        // Agregar la cláusula WHERE para actualizar solo para el usuario actual
+                        $sql .= " WHERE username = ?";
+                        $types .= "s";
+                        $params[] = $username;
+
+                        // Preparar la consulta con parámetros seguros
+                        $stmt = mysqli_prepare($conn, $sql);
+                        mysqli_stmt_bind_param($stmt, $types, ...$params);
+                        mysqli_stmt_execute($stmt);
+                        mysqli_stmt_close($stmt);
+
+                        echo "Datos actualizados correctamente";
+                    } else {
+                        echo "No se proporcionaron datos para actualizar";
+                    }
+                }
+                ?>
+                <div class="form-width" method="post">
                     <form class="edit-account" action="" method="post">
+                        <?php
+                        // Traer todo los datos del usuario
+                        $query = "SELECT * FROM usuario WHERE username=?";
+                        $stmt = mysqli_prepare($conn, $query);
+                        mysqli_stmt_bind_param($stmt, 's', $_SESSION['username']);
+                        mysqli_stmt_execute($stmt);
+                        $result = mysqli_stmt_get_result($stmt);
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $nombre = $row["nombre"];
+                            $apellidos = $row["apellido"];
+                            $email = $row["email"];
+                            $username = $row["username"];
+                        }
+
+                        ?>
                         <div class="form-row">
                             <label for="account_first_name">Nombre <span class="required">*</span></label>
-                            <input type="text" name="account_first_name" id="account_first_name" required>
+                            <input type="text" name="account_first_name" id="account_first_name" value="<?php echo $nombre?>">
                         </div>
                         <div class="form-row">
                             <label for="account_last_name">Apellidos <span class="required">*</span></label>
-                            <input type="text" name="account_last_name" id="account_last_name" required>
+                            <input type="text" name="account_last_name" id="account_last_name" value="<?php echo $apellidos?>">
                         </div>
                         <div class="form-row">
-                            <label for="account_display_name">Nombre visible <span class="required">*</span></label>
-                            <input type="text" name="account_display_name" id="account_display_name" value="menesesfrey" required>
+                            <label for="account_display_name">Nombre de usuario <span class="required">*</span></label>
+                            <input type="text" name="account_display_name" id="account_display_name" value="<?php echo $username?>">
                             <em>Así se mostrará tu nombre en la sección de tu cuenta y en las valoraciones</em>
                         </div>
                         <div class="form-row">
@@ -148,6 +242,20 @@ if (isset($_POST['logout'])) {
                             <button type="submit" name="save_account_details" value="Guardar los cambios" class="btn black big">Guardar los cambios</button>
                         </div>
                     </form>
+                </div>
+            </div>
+            <!-- Administrador -->
+            <div class="MyAccount-content" id="admin">
+                <h3 class="title"><span>Configuraciones del sistema</span></h3>
+                <p>Hola <strong>menesesfrey</strong>, hoy es un gran día para configurar el sistema. También
+                    puedes consultar:</p>
+                <div class="MyAccount-dashboard-buttons">
+                    <a href="system_admin.php" class="btn black big order-link">
+                        <i class="et-icon et_b-icon et-sent"></i><span>Registrar productos</span>
+                    </a>
+                    <a href="email-suscription.php" class="btn black big address-link">
+                        <i class="et-icon et_b-icon et-internet"></i><span>Email suscripciones</span>
+                    </a>
                 </div>
             </div>
         </div>
